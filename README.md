@@ -74,5 +74,67 @@ print("Model loaded successfully!")
 - If `conda` is not found, ensure that Miniforge is installed correctly and that your terminal is restarted.
 - If the Metal API is not detected, double-check the versions of `tensorflow-macos` and `tensorflow-metal`.
 
+
+========================================================================================================================================================
+To use Python with Jupyter on your MacBook Air M1, let’s go through the steps to install Jupyter Notebook and set it up with your TensorFlow environment.
+
+### 1. Install Jupyter Notebook in Your TensorFlow Environment
+
+1. First, make sure you activate your TensorFlow environment:
+
+   ```bash
+   conda activate tf_m1
+   ```
+
+2. Then, install Jupyter Notebook:
+
+   ```bash
+   conda install -c conda-forge jupyter
+   ```
+
+### 2. Launch Jupyter Notebook
+
+- Once installed, you can start Jupyter Notebook by running:
+
+  ```bash
+  jupyter notebook
+  ```
+
+- This command will open Jupyter in your default web browser.
+
+### 3. Create a Notebook Using the TensorFlow Environment
+
+- In Jupyter, you should see an option to select the kernel (Python environment) when you create a new notebook.
+- If your `tf_m1` environment doesn’t appear, follow the steps below to register it.
+
+### 4. (Optional) Register Your Conda Environment as a Kernel in Jupyter
+
+If `tf_m1` doesn’t appear as a kernel option in Jupyter, you can add it manually:
+
+1. First, install the `ipykernel` package in the `tf_m1` environment:
+
+   ```bash
+   conda activate tf_m1
+   pip install ipykernel
+   ```
+
+2. Add the environment to Jupyter:
+
+   ```bash
+   python -m ipykernel install --user --name=tf_m1 --display-name "Python (tf_m1)"
+   ```
+
+- Now, when you open Jupyter Notebook, you should see **Python (tf_m1)** as an available kernel.
+
+### 5. Verify TensorFlow in Jupyter
+
+To confirm everything works, open a new notebook in Jupyter and run:
+
+```python
+import tensorflow as tf
+print("TensorFlow version:", tf.__version__)
+print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+```
+
 ## License
 This guide is open-source and available for personal or educational use.
